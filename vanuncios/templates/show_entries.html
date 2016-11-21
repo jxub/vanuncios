@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+    <form action="{{ url_for('add_entry') }}" method=post class=add-entry>
+      <dl>
+        <dt>T&iacute;tulo:
+        <dd><input type=text size=30 name=title>
+        <dt>Texto:
+        <dd><textarea name=text rows=5 cols=40></textarea>
+        <dd><input type=submit value=Share>
+      </dl>
+    </form>
+  {% endif %}
+  <ul class=entries>
+  {% for entry in entries %}
+    <li><h2>{{ entry.title.decode('utf-8') }}</h2>{{ entry.text.decode('utf-8')|safe }}
+  {% else %}
+    <li><em>No has escrito nada. Viviendo la buena vida...</em>
+  {% endfor %}
+  </ul>
+{% endblock %}

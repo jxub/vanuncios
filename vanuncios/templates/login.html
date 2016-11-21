@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h2>Inicia sesi&oacute;n</h2>
+  {% if error %}<p class=error><strong>Error: </strong> {{ error.decode('utf-8') }}{% endif %}
+  <form action="{{ url_for('login') }}" method=post>
+    <dl>
+      <dt>Usuario:
+      <dd><input type=text name=username>
+      <dt>Contrase&ntilde;a:
+      <dd><input type=password name=password>
+      <dd><input type=submit value=Login>
+    </dl>
+  </form>
+{% endblock %}
